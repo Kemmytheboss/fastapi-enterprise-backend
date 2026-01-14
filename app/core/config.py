@@ -2,9 +2,14 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql://postgres:postgres@db:5432/app"
-    SECRET_KEY: str = "supersecretkey"
-    ALGORITHM: str = "HS256"
+    DATABASE_URL: str 
+    SECRET_KEY: str 
+    ALGORITHM: str 
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
 
 
 settings = Settings()
